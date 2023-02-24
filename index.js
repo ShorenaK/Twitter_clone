@@ -5,15 +5,35 @@ const tweetBtn = document.getElementById('tweet-btn')
 const feed = document.getElementById('feed')
 
 tweetBtn.addEventListener('click', function(){
-    console.log(tweetInput.value)
     tweetInput.value = ''
 })
 // document response the click on entire page 
 document.addEventListener('click', function(e){
-    console.log(e.target.dataset.like)
-    console.log(e.target.dataset.retweet)
-    console.log(e.target.dataset.reply)
+  if(e.target.dataset.like){
+    handleLikeclick(e.target.dataset.like)
+} 
+    // console.log("retweet", e.target.dataset.retweet)
+    // console.log("reply",e.target.dataset.reply)
 })
+
+function handleLikeclick(tweetId){
+    const targetTweetObj =
+     tweetsData.filter(function(tweet){
+        return tweet.uuid === tweetId
+    })[0] // returns object 
+
+ if(targetTweetObj.isLiked === true){
+    targetTweetObj.likes --   // dec the likes
+  
+ }else {
+    targetTweetObj.isLiked === false
+    targetTweetObj.likes ++
+   
+ }
+
+ targetTweetObj.isLiked = !targetTweetObj.isLiked // flipes boolean
+    render()  
+}
 
 function getFeedHtml(){
     let feedHmlt = ``
