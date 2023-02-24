@@ -8,6 +8,12 @@ tweetBtn.addEventListener('click', function(){
     console.log(tweetInput.value)
     tweetInput.value = ''
 })
+// document response the click on entire page 
+document.addEventListener('click', function(e){
+    console.log(e.target.dataset.like)
+    console.log(e.target.dataset.retweet)
+    console.log(e.target.dataset.reply)
+})
 
 function getFeedHtml(){
     let feedHmlt = ``
@@ -23,7 +29,7 @@ function getFeedHtml(){
                         <span class="tweet-detail">
 
                         <i class= "fa-regular fa-comment-dots"
-                        data-repy="${tweet.uuid}"
+                        data-reply="${tweet.uuid}"
                         > </i>
                             ${tweet.replies.length}
                         </span>
@@ -48,7 +54,7 @@ function getFeedHtml(){
     })
 return feedHmlt
 }
-console.log(getFeedHtml())
+// console.log(getFeedHtml())
 getFeedHtml()
 
 function render(){
