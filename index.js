@@ -61,17 +61,21 @@ function handleReplyClick(replyId){
  document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
 }
 function handleTweetBtnClick(){
-    console.log( {
-        handle: `@Shorena 💕`,
-        profilePic: `images/scrimbalogo.png`,
-        likes: 0,
-        retweets: 0,
-        tweetText: tweetInput.value,
-        replies: [],
-        isLiked: false,
-        isRetweeted: false,
-        uuid: uuidv4(),
-    })
+    if(tweetInput.value){
+        tweetsData.unshift({
+            handle: `@Shorena 💕`,
+            profilePic: `images/scrimbalogo.png`,
+            likes: 0,
+            retweets: 0,
+            tweetText: tweetInput.value,
+            replies: [],
+            isLiked: false,
+            isRetweeted: false,
+            uuid: uuidv4()
+        }) 
+        render()
+        tweetInput.value = ''
+    }
 }
 function getFeedHtml(){
     let feedHmlt = ``
