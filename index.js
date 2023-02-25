@@ -4,9 +4,10 @@ const tweetInput = document.getElementById('tweet-input')
 const tweetBtn = document.getElementById('tweet-btn')
 const feed = document.getElementById('feed')
 
-tweetBtn.addEventListener('click', function(){
-    tweetInput.value = ''
-})
+// tweetBtn.addEventListener('click', function(){
+//     // tweetInput.value = ''
+//     console.log(tweetInput.value)
+// })
 // document response the click on entire page 
 document.addEventListener('click', function(e){
   if(e.target.dataset.like){
@@ -17,6 +18,9 @@ else if(e.target.dataset.retweet){
 }
 else if(e.target.dataset.reply){
     handleReplyClick(e.target.dataset.reply)
+}
+else if(e.target.id === 'tweet-btn'){
+  handleTweetBtnClick()
 }
 })
 
@@ -34,11 +38,9 @@ function handleLikeclick(tweetId){
     targetTweetObj.likes++
    
  }
-
  targetTweetObj.isLiked = !targetTweetObj.isLiked // flipes boolean
     render()  
 }
-
 function handleRetweetClick(tweetId){
  const targetTweet = 
  tweetsData.filter(function(tweet){
@@ -54,8 +56,11 @@ function handleRetweetClick(tweetId){
   render()
 }
 
-function handleReplyClick(){
-
+function handleReplyClick(replyId){
+ document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
+}
+function handleTweetBtnClick(){
+    console.log(tweetInput.value)
 }
 function getFeedHtml(){
     let feedHmlt = ``
@@ -83,7 +88,7 @@ function getFeedHtml(){
                 </div>
             </div>
         </div>
-                    `
+         `
             })
         } 
         feedHmlt += `
