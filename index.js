@@ -1,7 +1,8 @@
 import { tweetsData } from './data.js'
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 const tweetInput = document.getElementById('tweet-input')
-const tweetBtn = document.getElementById('tweet-btn')
+// const tweetBtn = document.getElementById('tweet-btn')
 const feed = document.getElementById('feed')
 
 // tweetBtn.addEventListener('click', function(){
@@ -60,7 +61,17 @@ function handleReplyClick(replyId){
  document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
 }
 function handleTweetBtnClick(){
-    console.log(tweetInput.value)
+    console.log( {
+        handle: `@Shorena 💕`,
+        profilePic: `images/scrimbalogo.png`,
+        likes: 0,
+        retweets: 0,
+        tweetText: tweetInput.value,
+        replies: [],
+        isLiked: false,
+        isRetweeted: false,
+        uuid: uuidv4(),
+    })
 }
 function getFeedHtml(){
     let feedHmlt = ``
