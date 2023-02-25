@@ -15,7 +15,9 @@ document.addEventListener('click', function(e){
 else if(e.target.dataset.retweet){
     handleRetweetClick(e.target.dataset.retweet)
 }
-    // console.log("reply",e.target.dataset.reply)
+else if(e.target.dataset.reply){
+    handleReplyClick(e.target.dataset.reply)
+}
 })
 
 function handleLikeclick(tweetId){
@@ -52,6 +54,9 @@ function handleRetweetClick(tweetId){
   render()
 }
 
+function handleReplyClick(){
+
+}
 function getFeedHtml(){
     let feedHmlt = ``
     tweetsData.forEach(function(tweet){
