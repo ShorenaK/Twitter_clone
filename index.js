@@ -1,10 +1,5 @@
 import { tweetsData } from './data.js'
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
-
-// tweetBtn.addEventListener('click', function(){
-//     // tweetInput.value = ''
-//     console.log(tweetInput.value)
-// })
 // document response the click on entire page 
 document.addEventListener('click', function(e){
   if(e.target.dataset.like){
@@ -143,7 +138,7 @@ function getFeedHtml(){
     })
 return feedHmlt
 }
-// console.log(getFeedHtml())
+
 getFeedHtml()
 
 function render(){
