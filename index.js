@@ -1,10 +1,6 @@
 import { tweetsData } from './data.js'
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
-const tweetInput = document.getElementById('tweet-input')
-// const tweetBtn = document.getElementById('tweet-btn')
-const feed = document.getElementById('feed')
-
 // tweetBtn.addEventListener('click', function(){
 //     // tweetInput.value = ''
 //     console.log(tweetInput.value)
@@ -61,6 +57,7 @@ function handleReplyClick(replyId){
  document.getElementById(`replies-${replyId}`).classList.toggle('hidden')
 }
 function handleTweetBtnClick(){
+    const tweetInput = document.getElementById('tweet-input')
     if(tweetInput.value){
         tweetsData.unshift({
             handle: `@Shorena 💕`,
@@ -150,13 +147,7 @@ return feedHmlt
 getFeedHtml()
 
 function render(){
-   feed.innerHTML =  getFeedHtml()
-//    document.getElementById('feed').innerHTML = getFeedHtml()
+//     feed.innerHTML =  getFeedHtml()
+ document.getElementById('feed').innerHTML = getFeedHtml()
 }
 render()
-
-// tweetsData.forEach(function(tweet){
-//      tweet.replies.forEach(function(reply){
-//         console.log(reply)
-//      })
-// })
