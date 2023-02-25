@@ -64,10 +64,23 @@ function getFeedHtml(){
         if(tweet.isRetweeted){
             isRetweetedClass = 'retweeted'
         }
+
+        let repliesHtml = ''
         if(tweet.replies.length > 0){
-            console.log(tweet.uuid)
-        }
-        
+            tweet.replies.filter(function(singlereply){
+                repliesHtml += `
+                    <div class="tweet-reply">
+        <div class="tweet-inner">
+            <img src="${singlereply.profilePic}" class="profile-pic">
+                <div>
+                    <p class="handle">${singlereply.handle}</p>
+                    <p class="tweet-text">${singlereply.tweetText}</p>
+                </div>
+            </div>
+        </div>
+                    `
+            })
+        } 
         feedHmlt += `
         <div class="tweet">
             <div class="tweet-inner">
@@ -100,7 +113,11 @@ function getFeedHtml(){
                     </div>   
                 </div>            
             </div>
-        </div>`
+            <div class="hidden" id="replies-${tweet.uuid}"> 
+              ${repliesHtml}
+            </div>
+        </div>
+    `
     })
 return feedHmlt
 }
